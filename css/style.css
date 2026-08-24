@@ -1,4 +1,3 @@
-
 /* ==========================================================================
    CELTADeco Core Architecture - CSS Design Tokens
    ========================================================================== */
@@ -32,7 +31,6 @@ html {
    Header & Brand Asset Rules
    ========================================================================== */
 
-/* Persistent Header with Glassmorphism Effect */
 .site-header {
     position: fixed;
     top: 0;
@@ -41,21 +39,29 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.0rem 4%;
+    padding: 0.8rem 4%;
     z-index: 1000;
-    
-    /* Semi-transparent light background blending with body */
-    background-color: rgba(252, 252, 252, 0.85); 
-    
-    /* Smooth blur filter over underlying content */
+    background-color: rgba(252, 252, 252, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-
     transform: translateZ(0);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Ensure navigation links render cleanly on light glass background */
+.header-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: var(--transition-smooth);
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
 .main-nav a {
     color: var(--text-dark);
     text-decoration: none;
@@ -71,41 +77,18 @@ html {
     color: var(--accent);
 }
 
-
-.header-logo {
-    height: 130px; /* Constrains logo size in the structural layout */
-    width: auto;
-    display: block;
-    max-height: 100%;
-    transition: var(--transition-smooth);
-    align-items: left;
-}
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-
-.main-nav a:hover {
-    color: var(--accent);
-}
-
 /* ==========================================================================
    Hero Display Layout
    ========================================================================== */
 
-/* Hero Section Stacking Context */
 .hero-section {
     position: relative;
-    z-index: 1; /* Sits behind header z-index (1000) so it scrolls under clean and sharp */
+    z-index: 1;
 }
 
 .hero-overlay h1, 
 .hero-overlay h2 {
     color: #ffffff;
-    /* Crisp font rendering for webkit and gecko engines */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -113,20 +96,17 @@ html {
 /* ==========================================================================
    Structural Components & Sections
    ========================================================================== */
+
 .section-container {
     padding: 3rem 4%;
 }
 
-
-/* Offset section jump positions to account for fixed header height */
 .section-container,
 #portfolio,
 #about,
 #timeline {
-    scroll-margin-top: 140px;
+    scroll-margin-top: 100px;
 }
-
-
 
 .alternative-bg {
     background-color: var(--bg-secondary);
@@ -145,7 +125,6 @@ html {
     margin-bottom: 0.5rem;
 }
 
-/* Layout Frameworks */
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -162,12 +141,13 @@ html {
 .split-layout.reverse .text-block {
     order: 1;
 }
+
 .split-layout.reverse .media-block {
     order: 2;
 }
 
-/* Media Cards & Placeholders */
-.project-card img, .media-block img {
+.project-card img, 
+.media-block img {
     width: 100%;
     height: 350px;
     display: block;
@@ -175,7 +155,6 @@ html {
     transition: var(--transition-smooth);
 }
 
-/* Fix for the methodology/approach profile brand logo crop */
 .media-block img.profile-brand-mark {
     width: auto !important;
     height: auto !important;
@@ -185,7 +164,6 @@ html {
     opacity: 0.8;
 }
 
-/* Interior Design Project Management Component */
 .pm-status-board {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -206,7 +184,7 @@ html {
 @media (max-width: 768px) {
     .site-header {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
     }
     .main-nav ul {
         gap: 1rem;
@@ -223,6 +201,7 @@ html {
 /* ==========================================================================
    Project Media Drawer UI
    ========================================================================== */
+
 .project-media-drawer {
     margin-top: 1.5rem;
     border-top: 1px solid #e0e0e0;
@@ -245,10 +224,22 @@ html {
 
 .drawer-content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1rem;
     padding: 1rem 0;
     animation: fadeIn 0.4s ease;
+}
+
+.drawer-thumbnail {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+.drawer-thumbnail:hover {
+    opacity: 0.8;
 }
 
 @keyframes fadeIn {
@@ -256,9 +247,8 @@ html {
     to { opacity: 1; transform: translateY(0); }
 }
 
-
 /* ==========================================================================
-   Horizontal Scrollable Gantt Timeline Engine (Split Column Fix)
+   Horizontal Scrollable Gantt Timeline Engine
    ========================================================================== */
 
 .timeline-widget-container {
@@ -276,7 +266,6 @@ html {
     padding-bottom: 1rem;
 }
 
-/* Master structure holding BOTH Left Labels and Right Scroll view side-by-side */
 .gantt-scroll-wrapper {
     width: 100%;
     display: flex !important;
@@ -284,10 +273,9 @@ html {
     flex-wrap: nowrap !important;
     border: 1px solid #eee;
     background: #ffffff;
-    overflow: hidden; /* Main wrapper doesn't scroll; the timeline box inside does */
+    overflow: hidden;
 }
 
-/* Column A: Stationary Phase Labels (Locked on Left side) */
 .gantt-labels-column {
     width: 220px !important;
     min-width: 220px !important;
@@ -300,36 +288,32 @@ html {
     border-right: 2px solid #f0f0f0;
 }
 
-/* Space inside the labels column to match the timeline header row height */
 .gantt-label-header-spacer {
-    height: 29px; /* Matches the vertical alignment height of the timeline headers */
+    height: 29px;
     margin-bottom: 1rem;
 }
 
-/* Row-by-row label item height tracking */
 .gantt-label-item {
     font-size: 0.85rem;
     font-weight: bold;
     color: var(--text-dark);
-    height: 26px; /* Matches exact visual height of timeline track rows */
+    height: 26px;
     line-height: 26px;
-    margin-bottom: 1.5rem; /* Matches the gap pacing of the tracks */
+    margin-bottom: 1.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Column B: Scrollable Timeline Framework window */
 .gantt-timeline-view {
     flex-grow: 1;
-    overflow-x: auto !important; /* Forces the horizontal scrollbar strictly on this viewport */
+    overflow-x: auto !important;
     overflow-y: hidden;
 }
 
-/* The wide scrolling surface inside Column B */
 .gantt-internal-scroll-canvas {
     width: 100% !important;
-    min-width: 950px; /* Clamps baseline layout to stop total collapse */
+    min-width: 950px;
     position: relative;
     padding: 1.5rem;
     display: flex !important;
@@ -337,10 +321,9 @@ html {
     gap: 1rem;
 }
 
-/* Timeline Grid Header Marks */
 .timeline-grid-header {
     display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important; /* 7 equal sub-slots */
+    grid-template-columns: repeat(7, 1fr) !important;
     padding-bottom: 1rem;
     border-bottom: 1px solid #f0f0f0;
     text-align: center;
@@ -349,45 +332,36 @@ html {
     color: var(--text-muted);
 }
 
-/* Tracks Engine Container */
-/* Content Rows Layout */
 .timeline-tracks {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.5rem; /* Perfect pairing spacing matching labels */
+    gap: 1.5rem;
     position: relative;
     width: 100% !important;
-
-    /* DYNAMIC TRANSPARENT VERTICAL GRID LINES */
-    /* Divides the track container into 7 equal columns with a 5% opacity dark line */
     background: repeating-linear-gradient(
         to right,
         transparent,
         transparent calc(100% / 7 - 1px),
-        rgba(0, 0, 0, 0.1) calc(100% / 7 - 1px),
-        rgba(0, 0, 0, 0.1) calc(100% / 7)
+        rgba(0, 0, 0, 0.05) calc(100% / 7 - 1px),
+        rgba(0, 0, 0, 0.05) calc(100% / 7)
     );
 }
 
-
-/* Single lane structure row alignment */
 .timeline-row-track {
     width: 100% !important;
     height: 26px;
 }
 
-/* Progress track capsule styling filling full background area */
 .phase-bar-track {
     background: #f0f0f0;
     height: 26px;
     border-radius: 13px;
     display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important; /* Splices the bar container into 7 columns */
+    grid-template-columns: repeat(7, 1fr) !important;
     position: relative;
     width: 100% !important;
 }
 
-/* Inner active color bar positioning rules */
 .phase-bar {
     height: 100%;
     border-radius: 13px;
@@ -403,7 +377,6 @@ html {
 .status-active { background: var(--accent); }    
 .status-pending { background: #e0e0e0; color: #999; }
 
-/* Red Current Week Vertical Marker Line pin */
 .timeline-current-marker {
     position: absolute;
     top: 0;
@@ -414,7 +387,6 @@ html {
     pointer-events: none;
 }
 
-/* Webkit Scrollbar UI Tuning */
 .gantt-timeline-view::-webkit-scrollbar {
     height: 8px;
 }
@@ -426,14 +398,14 @@ html {
     border-radius: 4px;
 }
 
-
 /* ==========================================================================
    Project Card Scroll Engine Layout
    ========================================================================== */
+
 .project-card figure {
-    width: 130%;           
+    width: 100%;           
     max-width: 450px;       
-    height: 1000px;          
+    height: 500px;          
     margin: 0 auto;        
     display: flex;
     flex-direction: column; 
@@ -444,17 +416,22 @@ html {
 .project-card .img-scroll-container {
     width: 100%;
     flex-grow: 1;           
-    height: auto;           
-    overflow: auto;         
+    height: 100%;           
+    overflow: hidden !important; 
+    position: relative;
+    cursor: zoom-in;
     border: 1px solid #e0e0e0;
     background-color: #f9f9f9;
 }
 
-.project-card .img-scroll-container img {
+.project-card .img-scroll-container img.main-showcase-img {
     width: 100%;            
-    height: auto;           
+    height: 100%;           
     display: block;
-    max-width: none;        
+    object-fit: cover;
+    transform-origin: center center;
+    transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: scale(1);
 }
 
 .project-card figcaption {
@@ -464,67 +441,9 @@ html {
 }
 
 /* ==========================================================================
-   Persistent Bottom Banner & Dynamic Responsive Layout
-   ========================================================================== */
-
-/* Control the banner size by setting explicit internal vertical padding */
-footer, .site-footer {
-    height: auto !important;            
-    padding-top: .5rem !important;       
-    padding-bottom: .5rem !important;    
-    padding-left: 4% !important;
-    padding-right: 4% !important;
-    
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: center !important;     
-    justify-content: center !important;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #777777;
-    
-    background-color: rgba(26, 26, 26, 0.50) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-/* Reset the layout boundaries for the brand and container divs */
-.footer-brand, 
-.site-footer div,
-.footer-container {
-    height: auto !important;
-    max-height: none !important;
-    position: static !important;        
-    transform: none !important;
-    margin: 0 auto !important;
-}
-
-/* Your MASTER size control knob */
-img.footer-logo,
-.site-footer img {
-    height: 200px !important;            
-    width: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    filter: invert(1) brightness(2);    
-}
-
-/* This automatically stays below the logo, no matter how large the image gets */
-.site-footer .footer-info {
-    margin-top: 1rem !important;     
-}
-
-.site-footer p {
-    margin: 0 !important;
-    font-size: 0.75rem !important;
-    color: #777777 !important;
-    line-height: 1.4 !important;        
-}
-
-/* ==========================================================================
    Project List Accordion Architecture
    ========================================================================== */
+
 .project-accordion-list {
     display: flex;
     flex-direction: column;
@@ -535,7 +454,6 @@ img.footer-logo,
     border-bottom: 1px solid #e0e0e0;
 }
 
-/* Clear native summary triangles */
 .project-list-trigger {
     display: flex;
     justify-content: space-between;
@@ -544,6 +462,7 @@ img.footer-logo,
     cursor: pointer;
     list-style: none;
 }
+
 .project-list-trigger::-webkit-details-marker {
     display: none;
 }
@@ -571,12 +490,10 @@ img.footer-logo,
     transition: transform 0.3s ease;
 }
 
-/* Rotate the plus icon to a close sign when open */
 .project-accordion-item[open] .accordion-arrow {
     transform: rotate(45deg);
 }
 
-/* Inside Content Drawer Split Layout */
 .project-drawer-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -585,7 +502,6 @@ img.footer-logo,
     animation: fadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Safeguard frame for accordion figures */
 .accordion-figure {
     width: 100% !important;
     max-width: 100% !important;
@@ -601,7 +517,6 @@ img.footer-logo,
     margin-bottom: 1.5rem;
 }
 
-/* Responsive adjustment for small screens */
 @media (max-width: 768px) {
     .project-drawer-wrapper {
         grid-template-columns: 1fr;
@@ -610,31 +525,9 @@ img.footer-logo,
 }
 
 /* ==========================================================================
-   Showcase Photo Smooth Scroll-Wheel Zoom Controls
+   Live Property Link & Drawer Components
    ========================================================================== */
 
-/* Ensure the bounding box tightly clips the scaling image edges */
-.project-card .img-scroll-container {
-    overflow: hidden !important; 
-    position: relative;
-    cursor: zoom-in; 
-}
-
-/* Configure the baseline behavior for the target image */
-.project-card .img-scroll-container img.main-showcase-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform-origin: center center;
-    transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform: scale(1); 
-}
-
-/* ==========================================================================
-   Live Property Link & Expanded Drawer Styling
-   ========================================================================== */
-
-/* Live Property Link Styling */
 .live-asset-link {
     color: var(--accent);
     text-decoration: none;
@@ -643,21 +536,23 @@ img.footer-logo,
     font-size: 0.8rem;
     transition: filter 0.2s ease;
 }
+
 .live-asset-link:hover {
     filter: brightness(0.8);
     text-decoration: underline;
 }
 
-/* Expanded Drawer Layout & Button Styling */
 .drawer-header-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 }
+
 .drawer-header-row h4 {
-    margin-bottom: 0 !important; /* Resets baseline margin */
+    margin-bottom: 0 !important;
 }
+
 .btn-live-property {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -669,7 +564,60 @@ img.footer-logo,
     border-radius: 2px;
     transition: var(--transition-smooth);
 }
+
 .btn-live-property:hover {
     background-color: var(--accent);
     color: #ffffff;
 }
+
+/* ==========================================================================
+   Persistent Bottom Banner & Footer Layout
+   ========================================================================== */
+
+footer, .site-footer {
+    height: auto !important;            
+    padding: 2rem 4% !important;
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: center !important;     
+    justify-content: center !important;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777777;
+    background-color: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.footer-brand, 
+.site-footer div,
+.footer-container {
+    height: auto !important;
+    max-height: none !important;
+    position: static !important;        
+    transform: none !important;
+    margin: 0 auto !important;
+}
+
+img.footer-logo,
+.site-footer img {
+    height: 80px !important;            
+    width: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    filter: invert(1) brightness(2);    
+}
+
+.site-footer .footer-info {
+    margin-top: 1rem !important;     
+}
+
+.site-footer p {
+    margin: 0 !important;
+    font-size: 0.75rem !important;
+    color: #777777 !important;
+    line-height: 1.4 !important;        }
+
+
+
