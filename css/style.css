@@ -32,7 +32,6 @@ html {
    Header & Brand Asset Rules
    ========================================================================== */
 
-/* Fixed header with transparent blurred background layer */
 .site-header {
     position: fixed;
     top: 0;
@@ -43,28 +42,10 @@ html {
     align-items: center;
     padding: 1.0rem 4%;
     z-index: 1000;
-    background-color: transparent; /* Makes main header transparent */
-    overflow: hidden; /* Clips the background blur layer cleanly */
+    background-color: #191919; /* Solid dark background */
+    backdrop-filter: none; /* Disables GPU blur effect */
+    -webkit-backdrop-filter: none;
 }
-
-/* Pseudo-element to handle backdrop-filter exclusively */
-.site-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* Light tint opacity (0.15 to 0.25) so text scrolling behind stays sharp & visible */
-    background-color: rgba(25, 25, 25, 0.25); 
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    z-index: -1; /* Keeps backdrop filter behind logo & navigation links */
-}
-
-/* Ensure navbar children sit cleanly above the blur layer */
-.site-header > * {
-    position: relative;
-    z-index: 1;
-}
-
 
 /* Ensure header links stay crisp */
 .main-nav a {
