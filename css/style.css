@@ -31,6 +31,8 @@ html {
 /* ==========================================================================
    Header & Brand Asset Rules
    ========================================================================== */
+
+/* Update your .site-header rule in style.css */
 .site-header {
     position: fixed;
     top: 0;
@@ -42,15 +44,32 @@ html {
     padding: 1.0rem 4%;
     z-index: 1000;
     
-    /* MAGIC TRANSPARENCY RULE */
     background-color: rgba(25, 25, 25, 0.35); 
     backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    -webkit-backdrop-filter: blur(10px);
 
-    /* Keeps a crisp, subtle divider line under the glass banner */
     border-bottom: 1px solid rgba(0, 0, 0, 0.01); 
     transition: background-color var(--transition-smooth);
+
+    /* --- ADD THESE 3 FIXES BELOW --- */
+    transform: translateZ(0); /* Stops GPU subpixel font blurring */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+/* Ensure header links stay crisp */
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: var(--transition-smooth);
+    position: relative;
+    z-index: 1001; /* Elevates text above the backdrop layer */
+}
+
+
 
 .header-logo {
     height: 130px; /* Constrains logo size in the structural layout */
@@ -67,14 +86,6 @@ html {
     gap: 2rem;
 }
 
-.main-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: var(--transition-smooth);
-}
 
 .main-nav a:hover {
     color: var(--accent);
