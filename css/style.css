@@ -44,38 +44,32 @@ html {
     padding: 1.0rem 4%;
     z-index: 1000;
     
-    /* Semi-transparent dark background allowing underlying content to show */
-    background-color: rgba(25, 25, 25, 0.75); 
+    /* Semi-transparent light background blending with body */
+    background-color: rgba(252, 252, 252, 0.85); 
     
-    /* Backdrop blur filters the content scrolling BEHIND the header */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Smooth blur filter over underlying content */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
-    /* Isolates header text from being blurred by hardware acceleration */
     transform: translateZ(0);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Ensure Header Links & Logo Stay Layered Above Header Backdrop */
-.site-header .logo-container,
-.site-header .main-nav {
-    position: relative;
-    z-index: 1001;
-}
-
-
-/* Ensure header links stay crisp */
+/* Ensure navigation links render cleanly on light glass background */
 .main-nav a {
-    color: #ffffff;
+    color: var(--text-dark);
     text-decoration: none;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transition: var(--transition-smooth);
     position: relative;
-    z-index: 1001; /* Elevates text above the backdrop layer */
+    z-index: 1001;
 }
 
+.main-nav a:hover {
+    color: var(--accent);
+}
 
 
 .header-logo {
@@ -122,6 +116,17 @@ html {
 .section-container {
     padding: 3rem 4%;
 }
+
+
+/* Offset section jump positions to account for fixed header height */
+.section-container,
+#portfolio,
+#about,
+#timeline {
+    scroll-margin-top: 140px;
+}
+
+
 
 .alternative-bg {
     background-color: var(--bg-secondary);
