@@ -32,6 +32,7 @@ html {
    Header & Brand Asset Rules
    ========================================================================== */
 
+/* Persistent Header with Glassmorphism Effect */
 .site-header {
     position: fixed;
     top: 0;
@@ -42,10 +43,26 @@ html {
     align-items: center;
     padding: 1.0rem 4%;
     z-index: 1000;
-    background-color: #191919; /* Solid dark background */
-    backdrop-filter: none; /* Disables GPU blur effect */
-    -webkit-backdrop-filter: none;
+    
+    /* Semi-transparent dark background allowing underlying content to show */
+    background-color: rgba(25, 25, 25, 0.75); 
+    
+    /* Backdrop blur filters the content scrolling BEHIND the header */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    /* Isolates header text from being blurred by hardware acceleration */
+    transform: translateZ(0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* Ensure Header Links & Logo Stay Layered Above Header Backdrop */
+.site-header .logo-container,
+.site-header .main-nav {
+    position: relative;
+    z-index: 1001;
+}
+
 
 /* Ensure header links stay crisp */
 .main-nav a {
@@ -84,30 +101,19 @@ html {
 /* ==========================================================================
    Hero Display Layout
    ========================================================================== */
+
+/* Hero Section Stacking Context */
 .hero-section {
-    height: 39vh;
-    background: #1a1a1a; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 80px;
+    position: relative;
+    z-index: 1; /* Sits behind header z-index (1000) so it scrolls under clean and sharp */
 }
 
-.hero-overlay h1 {
-    font-size: 3.5rem;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-}
-
+.hero-overlay h1, 
 .hero-overlay h2 {
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+    color: #ffffff;
+    /* Crisp font rendering for webkit and gecko engines */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ==========================================================================
