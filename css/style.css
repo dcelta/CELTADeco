@@ -31,6 +31,7 @@ html {
    Header & Brand Asset Rules
    ========================================================================== */
 
+/* Fixed Header Layout */
 .site-header {
     position: fixed;
     top: 0;
@@ -39,17 +40,19 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 4%;
+    padding: 1.2rem 4%; /* Added vertical padding for breathing room */
     z-index: 1000;
-    background-color: rgba(252, 252, 252, 0.92);
+    background-color: rgba(252, 252, 252, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    transform: translateZ(0);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+
+
+/* Increased Header Logo Height */
 .header-logo {
-    height: 48px;
+    height: 70px; /* Increased from 48px to restore full size */
     width: auto;
     display: block;
     object-fit: contain;
@@ -81,22 +84,33 @@ html {
    Hero Display Layout
    ========================================================================== */
 
+/* Hero Section Spacing & Text Visibility */
 .hero-section {
     position: relative;
     z-index: 1;
+    padding-top: 140px; /* Offset to clear the fixed header completely */
+    padding-bottom: 3rem;
+    padding-left: 4%;
+    padding-right: 4%;
 }
 
 .hero-overlay h1 {
-    color: var(--text-dark);
-    font-size: 3rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
+    color: var(--text-dark); /* Ensure visible dark text on white background */
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
 }
 
 .hero-overlay h2 {
-    color: var(--text-muted);
+    color: var(--accent); /* Elegant accent shade */
     font-size: 1.25rem;
     font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.hero-overlay .location-badge {
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
 
