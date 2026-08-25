@@ -32,69 +32,85 @@ html {
    ========================================================================== */
 
 /* Fixed Header Layout */
+/* Top Banner Container */
 .site-header {
-    position: fixed;.hero-section {
-	position: relative;
-	z-index: 1;
-    }
-    
-    .hero-overlay h1 {
-	color: var(--text-dark);
-	font-size: 3rem;
-	font-weight: 300;
-	margin-bottom: 0.5rem;
-    }
-    
-    .hero-overlay h2 {
-	color: var(--text-muted);
-	font-size: 1.25rem;
-	font-weight: 400;
-    }
-    
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stacks brand info and nav vertically */
     align-items: center;
-    padding: 1.2rem 4%; /* Added vertical padding for breathing room */
+    padding: 1.5rem 4% 1rem 4%;
     z-index: 1000;
-    background-color: rgba(252, 252, 252, 0.95);
+    background-color: rgba(252, 252, 252, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-
-
-/* Increased Header Logo Height */
-.header-logo {
-    height: 150px; /* Increased from 48px to restore full size */
-    width: auto;
-    display: block;
-    object-fit: contain;
-    transition: var(--transition-smooth);
+/* Top Banner Container */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stacks brand info and nav vertically */
+    align-items: center;
+    padding: 1.5rem 4% 1rem 4%;
+    z-index: 1000;
+    background-color: rgba(252, 252, 252, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.main-nav ul {
+/* Brand & Hero Text Wrapper */
+.header-brand-container {
     display: flex;
-    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 0.75rem;
+}
+
+/* Header Hero Typography */
+.header-hero-content h1 {
+    color: var(--text-dark);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 0 0 0.2rem 0;
+}
+
+.header-hero-content h2 {
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 0 0.2rem 0;
+}
+
+.header-hero-content .location-badge {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Navigation Row */
+.main-nav {
+    display: flex;
     gap: 2rem;
 }
 
-.main-nav a {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: var(--transition-smooth);
-    position: relative;
-    z-index: 1001;
-}
-
-.main-nav a:hover {
-    color: var(--accent);
+/* Adjust top padding on your main page section so content starts below the taller banner */
+main, .portfolio-section {
+    padding-top: 220px;
 }
 
 /* ==========================================================================
