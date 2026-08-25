@@ -31,24 +31,6 @@ html {
    Header & Brand Asset Rules
    ========================================================================== */
 
-/* Fixed Header Layout */
-/* Top Banner Container */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column; /* Stacks brand info and nav vertically */
-    align-items: center;
-    padding: 1.5rem 4% 1rem 4%;
-    z-index: 1000;
-    background-color: rgba(252, 252, 252, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
 /* Top Banner Container */
 .site-header {
     position: fixed;
