@@ -52,7 +52,7 @@ html {
 
 /* Increased Header Logo Height */
 .header-logo {
-    height: 100px; /* Increased from 48px to restore full size */
+    height: 150px; /* Increased from 48px to restore full size */
     width: auto;
     display: block;
     object-fit: contain;
@@ -623,7 +623,7 @@ footer, .site-footer {
 
 img.footer-logo,
 .site-footer img {
-    height: 80px !important;            
+    height: 150px !important;            
     width: auto !important;
     display: block !important;
     margin: 0 auto !important;
