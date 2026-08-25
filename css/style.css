@@ -52,7 +52,7 @@ html {
 
 /* Increased Header Logo Height */
 .header-logo {
-    height: 70px; /* Increased from 48px to restore full size */
+    height: 80px; /* Increased from 48px to restore full size */
     width: auto;
     display: block;
     object-fit: contain;
@@ -112,6 +112,7 @@ html {
     color: var(--text-muted);
     font-size: 0.95rem;
 }
+
 
 
 /* ==========================================================================
