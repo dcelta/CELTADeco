@@ -28,7 +28,7 @@ html {
 }
 
 /* ==========================================================================
-   Header & Brand Asset Rules
+   Header & Fixed Top Banner Architecture
    ========================================================================== */
 
 .site-header {
@@ -39,7 +39,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 4%;
+    padding: 1.25rem 4%;
     background-color: rgba(252, 252, 252, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -55,72 +55,69 @@ html {
     align-items: center;
 }
 
-/* Center banner hero text directly inside header */
+.logo-container img.header-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Fixed Center Banner Hero Text */
 .header-hero-content {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    width: 100%;
 }
 
 .header-hero-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 600;
+    color: var(--text-dark);
     margin: 0;
+    letter-spacing: -0.01em;
 }
 
 .header-hero-content h2 {
-    font-size: 1.0rem;
+    font-size: 0.95rem;
     font-weight: 400;
-    color: var(--text-muted, #666);
-    margin: 0.25rem 0;
+    color: var(--accent);
+    margin: 0.2rem 0;
 }
 
 .header-hero-content .location-badge {
-    font-size: 0.85rem;
-    color: var(--text-muted, #888);
-    margin-top: 0.25rem;
-}
-
-/* Offset top page content to clear the tall fixed header */
-main {
-    padding-top: 220px;
-}
-/* ==========================================================================
-   Hero Display Layout
-   ========================================================================== */
-
-/* Hero Section Spacing & Text Visibility */
-.hero-section {
-    position: relative;
-    z-index: 1;
-    padding-top: 200px; /* Offset to clear the fixed header completely */
-    padding-bottom: 3rem;
-    padding-left: 4%;
-    padding-right: 4%;
-    text-align: center;
-}
-
-.hero-overlay h1 {
-    color: var(--text-dark); /* Ensure visible dark text on white background */
-    font-size: 2.8rem;
-    font-weight: 400;
-    margin-bottom: 0.25rem;
-    text-align: center !important;    
-}
-
-.hero-overlay h2 {
-    color: var(--accent); /* Elegant accent shade */
-    font-size: 1.25rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    text-align: center !important;
-}
-
-.hero-overlay .location-badge {
+    font-size: 0.8rem;
     color: var(--text-muted);
-    font-size: 0.95rem;
+    margin: 0;
 }
 
+/* Offset top page content to clear fixed top header height */
+main {
+    padding-top: 260px;
+}
 
+/* Scroll Offset for In-Page Anchor Links */
+.section-container,
+#portfolio,
+#about,
+#timeline {
+    scroll-margin-top: 260px;
+}
 
 /* ==========================================================================
    Structural Components & Sections
@@ -128,13 +125,6 @@ main {
 
 .section-container {
     padding: 3rem 4%;
-}
-
-.section-container,
-#portfolio,
-#about,
-#timeline {
-    scroll-margin-top: 100px;
 }
 
 .alternative-bg {
@@ -217,9 +207,6 @@ main {
     }
     .main-nav ul {
         gap: 1rem;
-    }
-    .hero-overlay h1 {
-        font-size: 2.5rem;
     }
     .split-layout.reverse .text-block,
     .split-layout.reverse .media-block {
@@ -646,7 +633,5 @@ img.footer-logo,
     margin: 0 !important;
     font-size: 0.75rem !important;
     color: #777777 !important;
-    line-height: 1.4 !important;        }
-
-
-
+    line-height: 1.4 !important;        
+}
