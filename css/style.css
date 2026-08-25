@@ -107,9 +107,11 @@ html {
 }
 
 /* Offset top page content to clear fixed top header height */
+
 main {
-    padding-top: 260px;
+    padding-top: 280px; /* Offset for the full height of the logo + nav + hero text banner */
 }
+
 
 /* Scroll Offset for In-Page Anchor Links */
 .section-container,
