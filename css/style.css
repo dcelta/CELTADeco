@@ -33,7 +33,24 @@ html {
 
 /* Fixed Header Layout */
 .site-header {
-    position: fixed;
+    position: fixed;.hero-section {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-overlay h1 {
+    color: var(--text-dark);
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.hero-overlay h2 {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
     top: 0;
     left: 0;
     width: 100%;
@@ -88,7 +105,7 @@ html {
 .hero-section {
     position: relative;
     z-index: 1;
-    padding-top: 140px; /* Offset to clear the fixed header completely */
+    padding-top: 200px; /* Offset to clear the fixed header completely */
     padding-bottom: 3rem;
     padding-left: 4%;
     padding-right: 4%;
