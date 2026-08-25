@@ -37,82 +37,53 @@ html {
     left: 0;
     width: 100%;
     display: flex;
-    flex-direction: row; /* Horizontal top bar */
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem 4%;
-    z-index: 1000;
+    padding: 1.5rem 4%;
     background-color: rgba(252, 252, 252, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 1000;
 }
 
-.main-nav ul {
+/* Top row: Logo on left, Navigation links on right */
+.header-top-row {
+    width: 100%;
     display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--text-dark);
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-}
-
-main {
-    padding-top: 100px; /* Offset for slim top navigation */
-}
-
-/* Brand & Hero Text Wrapper */
-.header-brand-container {
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+}
+
+/* Center banner hero text directly inside header */
+.header-hero-content {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
-.header-logo {
-    height: 60px;
-    width: auto;
-    margin-bottom: 0.75rem;
-}
-
-/* Header Hero Typography */
 .header-hero-content h1 {
-    color: var(--text-dark);
-    font-size: 1.75rem;
-    font-weight: 400;
-    margin: 0 0 0.2rem 0;
-}
-
-.header-hero-content h2 {
-    color: var(--accent);
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0 0 0.2rem 0;
-}
-
-.header-hero-content .location-badge {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 1.8rem;
+    font-weight: 600;
     margin: 0;
 }
 
-/* Navigation Row */
-.main-nav {
-    display: flex;
-    gap: 2rem;
+.header-hero-content h2 {
+    font-size: 1.0rem;
+    font-weight: 400;
+    color: var(--text-muted, #666);
+    margin: 0.25rem 0;
 }
 
-/* Adjust top padding on your main page section so content starts below the taller banner */
-main, .portfolio-section {
+.header-hero-content .location-badge {
+    font-size: 0.85rem;
+    color: var(--text-muted, #888);
+    margin-top: 0.25rem;
+}
+
+/* Offset top page content to clear the tall fixed header */
+main {
     padding-top: 220px;
 }
-
 /* ==========================================================================
    Hero Display Layout
    ========================================================================== */
