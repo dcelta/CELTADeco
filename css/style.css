@@ -726,4 +726,26 @@ img.footer-logo,
     border-radius: 2px;
 }
 
+<!--  Rotating Thumbnail Animation for projects -->
+
+
+
+/* Target the wrapper link container */
+.portfolio-thumb-link {
+    display: block;
+    max-width: 380px; /* <--- CONTROLS MAXIMUM WIDTH OF THE WRAPPER */
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Target the image directly with !important to override inline conflicts */
+.rotating-thumb {
+    width: 100% !important;
+    max-width: 280px !important; /* <--- SET YOUR DESIRED MAX THUMBNAIL WIDTH HERE */
+    height: 240px !important;    /* <--- SET FIXED HEIGHT FOR UNIFORMITY */
+    object-fit: cover !important; /* Prevents stretching/distortion */
+    display: block;
+    border-radius: 4px;
+}
+
 

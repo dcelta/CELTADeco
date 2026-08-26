@@ -48,11 +48,19 @@
         <span class="tracer">01 / Works</span>
         <h2>Portfolio</h2>
       </div>
-      
       <div class="project-accordion-list">
         <!-- Project 1: Alfonso XIII -->
         <details class="project-accordion-item">
           <summary class="project-list-trigger">
+	    <!-- Single Project Item / Drawer Container -->
+	    <!-- 1. Thumbnail Image (Inside the container outside of the drawer) -->
+	    <a href="project-Alfonso XIII.html" class="portfolio-thumb-link">
+              <img src="images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 01.jpg" 
+		   alt="Alfonso XIII interior view" 
+		   class="rotating-thumb" 
+		   data-project="Alfonso XIII">
+	    </a>
+
             <div class="trigger-meta">
               <span class="project-title">Alfonso XIII</span>
               <span class="project-loc">
@@ -62,6 +70,7 @@
             </div>
             <span class="accordion-arrow">&#43;</span>
           </summary>
+	  
           
           <div class="project-drawer-wrapper project-card">
             <figure class="accordion-figure">
@@ -90,11 +99,20 @@
         <!-- Project 2: Fuenlabrada Living -->
         <details class="project-accordion-item">
           <summary class="project-list-trigger">
+	    <!-- 1. Thumbnail Image (Inside the container outside of the drawer) -->
+	    <a href="project-Fuenlabrada Living.html" class="portfolio-thumb-link">
+              <img src="images/Fuenlabrada/fotos/IMG_20260530_211927.jpg" 
+		   alt="Fuenlabrada living detail view" 
+		   class="rotating-thumb" 
+		   data-project="Fuenlabrada Living">
+	    </a>
+
+	    
             <div class="trigger-meta">
               <span class="project-title">Fuenlabrada Living Madrid</span>
               <span class="project-loc">
                 Madrid &mdash; Procurement & Site Direction 
-<!--                <a href="https://caterinastays.kross.travel/book/step1?kross_lang=en&n_guests=2&rooms=1&omnibar=collection%3B&from=&to=" target="_blank" rel="noopener" class="live-asset-link">&bull; View Live Booking</a> -->
+		<!--  <a href="https://caterinastays.kross.travel/book/step1?kross_lang=en&n_guests=2&rooms=1&omnibar=collection%3B&from=&to=" target="_blank" rel="noopener" class="live-asset-link">&bull; View Live Booking</a> -->
               </span>
             </div>
             <span class="accordion-arrow">&#43;</span>                      
@@ -451,5 +469,46 @@
           }
       });
     </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+	  // 1. Define sample images for each project
+	  const projectGalleries = {
+              'Alfonso XIII': [
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 01.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 02.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 03.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 05.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 06.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 07.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 08.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 09.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 11.jpg',
+		  'images/Alfonso XIII/RESOLUCION WEB/Santa Hortensia, 12 1E 12.jpg'
+	      ],
+              'Fuenlabrada Living': [
+		  'images/Fuenlabrada/fotos/IMG_20260530_211927.jpg',
+		  'images/Fuenlabrada/fotos/IMG_20260530_212148.jpg',
+		  'images/Fuenlabrada/fotos/IMG_20260530_212248.jpg'
+              ]
+	  };
+	  
+	  // 2. Select all rotating thumbnails on the page
+	  const thumbnails = document.querySelectorAll('.rotating-thumb');
+	  
+	  thumbnails.forEach(thumb => {
+              const key = thumb.getAttribute('data-project');
+              const images = projectGalleries[key];
+	      
+              if (images && images.length > 0) {
+		  // Pick a random image from the array on page reload
+		  const randomIndex = Math.floor(Math.random() * images.length);
+		  thumb.src = images[randomIndex];
+              }
+	  });
+      });
+    </script>
+    
+    
 </body>
 </html>
