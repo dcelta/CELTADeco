@@ -109,7 +109,7 @@ html {
 /* Offset top page content to clear fixed top header height */
 
 main {
-    padding-top: 380px; /* Offset for the full height of the logo + nav + hero text banner */
+    padding-top: 300px; /* Offset for the full height of the logo + nav + hero text banner */
 }
 
 
