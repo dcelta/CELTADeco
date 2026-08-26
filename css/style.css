@@ -32,17 +32,23 @@ html {
    Header & Top Banner Architecture (3-Column Layout)
    ========================================================================== */
 
+/* ==========================================================================
+   Header & Top Banner Architecture (Dark Theme Matching Footer)
+   ========================================================================== */
+
 .site-header {
     position: static;
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 1.25rem 4%;
-    background-color: rgba(252, 252, 252, 0.98);
+    background-color: rgba(26, 26, 26, 0.95); /* Matches footer background */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
 
 .header-container {
     display: flex;
@@ -52,6 +58,8 @@ html {
     max-width: 1400px;
     margin: 0 auto;
 }
+
+
 
 /* Equal Flex Columns for Center Alignment */
 .logo-container,
@@ -78,23 +86,25 @@ html {
     padding: 0 1rem;
 }
 
+
 .hero-title-block h1 {
     font-size: 1.75rem;
     margin: 0 0 4px 0;
-    color: var(--text-dark);
+    color: #fcfcfc; /* High contrast light text */
     font-weight: 700;
     letter-spacing: -0.01em;
 }
 
+
 .hero-title-block .subtitle {
     font-size: 0.95rem;
-    color: var(--accent-subtle);
+    color: #d4c5b0; /* Lightened warm taupe for dark background legibility */
     margin: 0 0 2px 0;
 }
 
 .hero-title-block .sub-subtitle {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: #888888;
     margin: 0;
 }
 
@@ -112,9 +122,10 @@ html {
     padding: 0;
 }
 
+
 .main-nav a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: #fcfcfc; /* White navigation text */
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
@@ -122,9 +133,11 @@ html {
     transition: var(--transition-smooth);
 }
 
+
 .main-nav a:hover {
-    color: var(--accent);
+    color: #d4c5b0; /* Warm taupe hover accent */
 }
+
 
 /* Responsive Header Breakpoint */
 @media (max-width: 768px) {
