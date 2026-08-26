@@ -8,6 +8,7 @@
     --text-dark: #1a1a1a;
     --text-muted: #666666;
     --accent: #b5a48c; /* Editorial Warm Taupe */
+    --accent-subtle: #a38f68;
     --font-sans: 'Helvetica Neue', Arial, sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -28,43 +29,87 @@ html {
 }
 
 /* ==========================================================================
-   Header & Fixed Top Banner Architecture
+   Header & Top Banner Architecture (3-Column Layout)
    ========================================================================== */
 
 .site-header {
     position: static;
-    top: 0;
-    left: 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     padding: 1.25rem 4%;
     background-color: rgba(252, 252, 252, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    z-index: 1000;
 }
 
-/* Top row: Logo on left, Navigation links on right */
-.header-top-row {
-    width: 100%;
+.header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.logo-container img.header-logo {
-    height: 200px;
+/* Equal Flex Columns for Center Alignment */
+.logo-container,
+.main-nav {
+    flex: 1;
+}
+
+/* Left Column: Logo */
+.logo-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-logo {
+    max-height: 70px;
     width: auto;
     display: block;
 }
 
+/* Center Column: Name & Subtitles */
+.hero-title-block {
+    flex: 2;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.hero-title-block h1 {
+    font-size: 1.75rem;
+    margin: 0 0 4px 0;
+    color: var(--text-dark);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.hero-title-block .subtitle {
+    font-size: 0.95rem;
+    color: var(--accent-subtle);
+    margin: 0 0 2px 0;
+}
+
+.hero-title-block .sub-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Right Column: Navigation Links */
+.main-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .main-nav ul {
     display: flex;
+    gap: 1.5rem;
     list-style: none;
-    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .main-nav a {
@@ -74,51 +119,22 @@ html {
     font-size: 0.85rem;
     letter-spacing: 0.05em;
     font-weight: 500;
+    transition: var(--transition-smooth);
 }
 
-/* Fixed Center Banner Hero Text */
-.header-hero-content {
-    text-align: center;
-    margin-top: 0.75rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-    width: 100%;
-}
-
-.header-hero-content h1 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin: 0;
-    letter-spacing: -0.01em;
-}
-
-.header-hero-content h2 {
-    font-size: 0.95rem;
-    font-weight: 400;
+.main-nav a:hover {
     color: var(--accent);
-    margin: 0.2rem 0;
 }
 
-.header-hero-content .location-badge {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin: 0;
-}
-
-/* Offset top page content to clear fixed top header height */
-
-main {
-    padding-top: 0px; /* Offset for the full height of the logo + nav + hero text banner */
-}
-
-
-/* Scroll Offset for In-Page Anchor Links */
-.section-container,
-#portfolio,
-#about,
-#timeline {
-    scroll-margin-top: 0;
+/* Responsive Header Breakpoint */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .logo-container, .main-nav {
+        justify-content: center;
+    }
 }
 
 /* ==========================================================================
@@ -201,15 +217,7 @@ main {
     margin-bottom: 0;
 }
 
-/* Responsive Structural Breakpoints */
 @media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    .main-nav ul {
-        gap: 1rem;
-    }
     .split-layout.reverse .text-block,
     .split-layout.reverse .media-block {
         order: initial;
