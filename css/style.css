@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CELTADECO Core Architecture - CSS Design Tokens
+   CELTADECO Core Architecture - CSS Design Tokens & Reset
    ========================================================================== */
 
 :root {
@@ -13,7 +13,6 @@
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Reset & Global Normalization */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,11 +28,7 @@ html {
 }
 
 /* ==========================================================================
-   Header & Top Banner Architecture (3-Column Layout)
-   ========================================================================== */
-
-/* ==========================================================================
-   Header & Top Banner Architecture (Dark Theme Matching Footer)
+   Header & Navigation
    ========================================================================== */
 
 .site-header {
@@ -42,13 +37,12 @@ html {
     display: flex;
     justify-content: center;
     padding: 1.25rem 4%;
-    background-color: rgba(26, 26, 26, 0.95); /* Matches footer background */
+    background-color: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
-
 
 .header-container {
     display: flex;
@@ -59,15 +53,11 @@ html {
     margin: 0 auto;
 }
 
-
-
-/* Equal Flex Columns for Center Alignment */
 .logo-container,
 .main-nav {
     flex: 1;
 }
 
-/* Left Column: Logo */
 .logo-container {
     display: flex;
     justify-content: flex-start;
@@ -79,26 +69,23 @@ html {
     display: block;
 }
 
-/* Center Column: Name & Subtitles */
 .hero-title-block {
     flex: 2;
     text-align: center;
     padding: 0 1rem;
 }
 
-
 .hero-title-block h1 {
     font-size: 1.75rem;
     margin: 0 0 4px 0;
-    color: #fcfcfc; /* High contrast light text */
+    color: #fcfcfc;
     font-weight: 700;
     letter-spacing: -0.01em;
 }
 
-
 .hero-title-block .subtitle {
     font-size: 0.95rem;
-    color: #d4c5b0; /* Lightened warm taupe for dark background legibility */
+    color: #d4c5b0;
     margin: 0 0 2px 0;
 }
 
@@ -108,7 +95,6 @@ html {
     margin: 0;
 }
 
-/* Right Column: Navigation Links */
 .main-nav {
     display: flex;
     justify-content: flex-end;
@@ -122,10 +108,9 @@ html {
     padding: 0;
 }
 
-
 .main-nav a {
     text-decoration: none;
-    color: #fcfcfc; /* White navigation text */
+    color: #fcfcfc;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
@@ -133,27 +118,12 @@ html {
     transition: var(--transition-smooth);
 }
 
-
 .main-nav a:hover {
-    color: #d4c5b0; /* Warm taupe hover accent */
+    color: #d4c5b0;
 }
-
-
-/* Responsive Header Breakpoint */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .logo-container, .main-nav {
-        justify-content: center;
-    }
-}
-
-
 
 /* ==========================================================================
-   Structural Components & Sections
+   Structural Layouts & Sections
    ========================================================================== */
 
 .section-container {
@@ -177,25 +147,11 @@ html {
     margin-bottom: 0.5rem;
 }
 
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 3rem;
-}
-
 .split-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 4rem;
     align-items: center;
-}
-
-.split-layout.reverse .text-block {
-    order: 1;
-}
-
-.split-layout.reverse .media-block {
-    order: 2;
 }
 
 .project-card img, 
@@ -214,271 +170,6 @@ html {
     object-fit: contain;   
     margin: 0 auto;
     opacity: 0.8;
-}
-
-.pm-status-board {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #ffffff;
-    border-left: 3px solid var(--accent);
-}
-
-.status-metric {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.status-metric:last-child {
-    margin-bottom: 0;
-}
-
-@media (max-width: 768px) {
-    .split-layout.reverse .text-block,
-    .split-layout.reverse .media-block {
-        order: initial;
-    }
-}
-
-/* ==========================================================================
-   Project Media Drawer UI
-   ========================================================================== */
-
-.project-media-drawer {
-    margin-top: 1.5rem;
-    border-top: 1px solid #e0e0e0;
-}
-
-.drawer-trigger {
-    padding: 1rem 0;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-    cursor: pointer;
-    font-weight: bold;
-    list-style: none;
-}
-
-.drawer-trigger::-webkit-details-marker {
-    display: none; 
-}
-
-.drawer-content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-    padding: 1rem 0;
-    animation: fadeIn 0.4s ease;
-}
-
-.drawer-thumbnail {
-    width: 100%;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 2px;
-    transition: var(--transition-smooth);
-}
-
-.drawer-thumbnail:hover {
-    opacity: 0.8;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ==========================================================================
-   Horizontal Scrollable Gantt Timeline Engine
-   ========================================================================== */
-
-.timeline-widget-container {
-    background: #ffffff;
-    padding: 2.5rem;
-    margin-top: 0;
-    border-radius: 4px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    width: 100%;
-}
-
-.timeline-widget-header {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 1rem;
-}
-
-.gantt-scroll-wrapper {
-    width: 100%;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    border: 1px solid #eee;
-    background: #ffffff;
-    overflow: hidden;
-}
-
-.gantt-labels-column {
-    width: 220px !important;
-    min-width: 220px !important;
-    flex-shrink: 0 !important;
-    background: #ffffff;
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 1.5rem 1rem 1.5rem 1.5rem;
-    z-index: 10;
-    border-right: 2px solid #f0f0f0;
-}
-
-.gantt-label-header-spacer {
-    height: 29px;
-    margin-bottom: 1rem;
-}
-
-.gantt-label-item {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: var(--text-dark);
-    height: 26px;
-    line-height: 26px;
-    margin-bottom: 1.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.gantt-timeline-view {
-    flex-grow: 1;
-    overflow-x: auto !important;
-    overflow-y: hidden;
-}
-
-.gantt-internal-scroll-canvas {
-    width: 100% !important;
-    min-width: 950px;
-    position: relative;
-    padding: 1.5rem;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1rem;
-}
-
-.timeline-grid-header {
-    display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #f0f0f0;
-    text-align: center;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-.timeline-tracks {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.5rem;
-    position: relative;
-    width: 100% !important;
-    background: repeating-linear-gradient(
-        to right,
-        transparent,
-        transparent calc(100% / 7 - 1px),
-        rgba(0, 0, 0, 0.05) calc(100% / 7 - 1px),
-        rgba(0, 0, 0, 0.05) calc(100% / 7)
-    );
-}
-
-.timeline-row-track {
-    width: 100% !important;
-    height: 26px;
-}
-
-.phase-bar-track {
-    background: #f0f0f0;
-    height: 26px;
-    border-radius: 13px;
-    display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important;
-    position: relative;
-    width: 100% !important;
-}
-
-.phase-bar {
-    height: 100%;
-    border-radius: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.status-completed { background: #adbcac; } 
-.status-active { background: var(--accent); }    
-.status-pending { background: #e0e0e0; color: #999; }
-
-.timeline-current-marker {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #c94a4a; 
-    z-index: 5;
-    pointer-events: none;
-}
-
-.gantt-timeline-view::-webkit-scrollbar {
-    height: 8px;
-}
-.gantt-timeline-view::-webkit-scrollbar-track {
-    background: #f5f5f3;
-}
-.gantt-timeline-view::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 4px;
-}
-
-/* ==========================================================================
-   Project Card Scroll Engine Layout
-   ========================================================================== */
-
-.project-card figure {
-    width: 100%;           
-    max-width: 450px;       
-    height: 500px;          
-    margin: 0 auto;        
-    display: flex;
-    flex-direction: column; 
-    position: relative;     
-    overflow: hidden;       
-}
-
-.project-card .img-scroll-container {
-    width: 100%;
-    flex-grow: 1;           
-    height: 100%;           
-    overflow: hidden !important; 
-    position: relative;
-    cursor: zoom-in;
-    border: 1px solid #e0e0e0;
-    background-color: #f9f9f9;
-}
-
-.project-card .img-scroll-container img.main-showcase-img {
-    width: 100%;            
-    height: 100%;           
-    display: block;
-    object-fit: cover;
-    transform-origin: center center;
-    transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform: scale(1);
-}
-
-.project-card figcaption {
-    padding: 0.5rem 0 0 0;    
-    color: var(--text-dark);
-    flex-shrink: 0;         
 }
 
 /* ==========================================================================
@@ -558,112 +249,143 @@ html {
     margin-bottom: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .project-drawer-wrapper {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+.drawer-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+    animation: fadeIn 0.4s ease;
 }
 
-/* ==========================================================================
-   Live Property Link & Drawer Components
-   ========================================================================== */
-
-.live-asset-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-    transition: filter 0.2s ease;
-}
-
-.live-asset-link:hover {
-    filter: brightness(0.8);
-    text-decoration: underline;
-}
-
-.drawer-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.drawer-header-row h4 {
-    margin-bottom: 0 !important;
-}
-
-.btn-live-property {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-dark);
-    text-decoration: none;
-    border: 1px solid var(--accent);
-    padding: 0.4rem 0.8rem;
+.drawer-thumbnail {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
     border-radius: 2px;
     transition: var(--transition-smooth);
 }
 
-.btn-live-property:hover {
-    background-color: var(--accent);
-    color: #ffffff;
+.drawer-thumbnail:hover {
+    opacity: 0.8;
+}
+
+/* Thumbnail Animations & Scroll Engines */
+.portfolio-thumb-link {
+    display: block;
+    max-width: 380px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rotating-thumb {
+    width: 100% !important;
+    max-width: 280px !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    display: block;
+    border-radius: 4px;
+}
+
+.project-card figure {
+    width: 100%;           
+    max-width: 450px;       
+    height: 500px;          
+    margin: 0 auto;        
+    display: flex;
+    flex-direction: column; 
+    position: relative;     
+    overflow: hidden;       
+}
+
+.project-card .img-scroll-container {
+    width: 100%;
+    flex-grow: 1;           
+    height: 100%;           
+    overflow: hidden !important; 
+    position: relative;
+    cursor: zoom-in;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+}
+
+.project-card .img-scroll-container img.main-showcase-img {
+    width: 100%;            
+    height: 100%;           
+    display: block;
+    object-fit: cover;
+    transform-origin: center center;
+    transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: scale(1);
 }
 
 /* ==========================================================================
-   Persistent Bottom Banner & Footer Layout
+   Approach Table
    ========================================================================== */
 
-footer, .site-footer {
-    height: auto !important;            
-    padding: 2rem 4% !important;
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: center !important;     
-    justify-content: center !important;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #777777;
-    background-color: rgba(26, 26, 26, 0.95) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 2rem;
 }
 
-.footer-brand, 
-.site-footer div,
-.footer-container {
-    height: auto !important;
-    max-height: none !important;
-    position: static !important;        
-    transform: none !important;
-    margin: 0 auto !important;
+.approach-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-img.footer-logo,
-.site-footer img {
-    height: 200px !important;            
-    width: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    filter: invert(1) brightness(2);    
+.approach-table thead tr {
+    border-bottom: 2px solid #1a1a1a;
 }
 
-.site-footer .footer-info {
-    margin-top: 1rem !important;     
+.approach-table th {
+    padding: 1rem 1.25rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--text-dark);
 }
 
-.site-footer p {
-    margin: 0 !important;
-    font-size: 0.75rem !important;
-    color: #777777 !important;
-    line-height: 1.4 !important;        
+.approach-table td {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    vertical-align: top;
+    color: var(--text-dark);
 }
 
+.col-phase { width: 8%; }
+.col-title { width: 27%; }
+.col-details { width: 65%; }
+
+.phase-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+.phase-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.table-list {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+    list-style-type: square;
+}
+
+.table-list li {
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+}
 
 /* ==========================================================================
-   About Me / Bio Section Styling
+   About / Bio Section
    ========================================================================== */
 
 .bio-headline {
@@ -674,20 +396,8 @@ img.footer-logo,
     color: var(--text-dark);
 }
 
-.text-block p {
-    margin-bottom: 1.25rem;
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
 .bio-intro {
     font-size: 1.1rem;
-}
-
-.bio-location {
-    font-weight: 500;
-    color: var(--accent) !important;
-    margin-top: 1.5rem;
 }
 
 .bio-social-links {
@@ -716,36 +426,82 @@ img.footer-logo,
     color: #ffffff;
 }
 
-
 .bio-portrait {
     width: 100%;
-    max-width: 320px; /* Adjust this value to make the photo larger or smaller */
-    height: auto;     /* Maintains exact natural proportions */
+    max-width: 320px;
+    height: auto;
     display: block;
-    margin: 0 auto;   /* Centers the image within its column */
+    margin: 0 auto;
     border-radius: 2px;
 }
 
-<!--  Rotating Thumbnail Animation for projects -->
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 
-
-
-/* Target the wrapper link container */
-.portfolio-thumb-link {
-    display: block;
-    max-width: 380px; /* <--- CONTROLS MAXIMUM WIDTH OF THE WRAPPER */
-    width: 100%;
-    overflow: hidden;
+footer, .site-footer {
+    height: auto !important;            
+    padding: 2rem 4% !important;
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: center !important;     
+    justify-content: center !important;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777777;
+    background-color: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-/* Target the image directly with !important to override inline conflicts */
-.rotating-thumb {
-    width: 100% !important;
-    max-width: 280px !important; /* <--- SET YOUR DESIRED MAX THUMBNAIL WIDTH HERE */
-    height: 240px !important;    /* <--- SET FIXED HEIGHT FOR UNIFORMITY */
-    object-fit: cover !important; /* Prevents stretching/distortion */
-    display: block;
-    border-radius: 4px;
+.footer-container {
+    height: auto !important;
+    margin: 0 auto !important;
 }
 
+img.footer-logo,
+.site-footer img {
+    height: 200px !important;            
+    width: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    filter: invert(1) brightness(2);    
+}
 
+.site-footer .footer-info {
+    margin-top: 1rem !important;     
+}
+
+.site-footer p {
+    margin: 0 !important;
+    font-size: 0.75rem !important;
+    color: #777777 !important;
+    line-height: 1.4 !important;        
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .logo-container, .main-nav {
+        justify-content: center;
+    }
+    .project-drawer-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .approach-table th, 
+    .approach-table td {
+        padding: 1rem 0.75rem;
+    }
+    .col-phase { width: 12%; }
+    .col-title { width: 33%; }
+    .col-details { width: 55%; }
+}
