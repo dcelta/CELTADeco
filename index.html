@@ -27,7 +27,8 @@
         <ul>
           <li><a href="#portfolio">PROJECTS</a></li>
           <li><a href="#approach">APPROACH</a></li>
-          <li><a href="#contact">ABOUT ME</a></li>
+          <li><a href="#about">ABOUT ME</a></li>
+          <li><a href="#contact">CONTACT</a></li>
         </ul>
       </nav>
     </div>
@@ -427,9 +428,9 @@
         </table>
       </div>
     </section>
-
-    <!-- Section 03: About Me / Contact -->
-    <section id="contact" class="section-container alternative-bg">
+    
+    <!-- Section 03: About Me -->
+    <section id="about" class="section-container alternative-bg">
       <div class="split-layout">
         <div class="text-block">
           <span class="tracer">03 / ABOUT ME</span>
@@ -454,6 +455,54 @@
         </div>
       </div>
     </section>
+
+    <!-- Section 04: Contact -->
+    <section id="contact" class="section-container">
+      <div class="section-header">
+        <span class="tracer">04 / GET IN TOUCH</span>
+        <h2 class="section-title">Get in Touch</h2>
+      </div>
+      
+      <div class="contact-grid">
+        <!-- Direct Reach -->
+        <div class="contact-card">
+          <h3 class="contact-card-heading">Direct Contact</h3>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-label">Email</span>
+              <a href="mailto:jorgeali@celtadeco.com" class="contact-link">jorgeali@celtadeco.com</a>
+            </li>
+            <li>
+              <span class="contact-label">Phone</span>
+              <a href="tel:+34658037643" class="contact-link">+34 (658) 03 76 43</a>
+            </li>
+            <li>
+              <span class="contact-label">Location</span>
+              <span class="contact-text">Carrer Pintor Josep Pinos 14 Barcelona 08031</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Professional & Social -->
+        <div class="contact-card">
+          <h3 class="contact-card-heading">Connect & Social</h3>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/jorgecelta/" target="_blank" rel="noopener noreferrer" class="btn-social">
+                jorgecelta ↗
+              </a>
+            </li>
+            <li>
+              <span class="contact-label">Instagram</span>
+              <a href="https://www.instagram.com/celtadeco/" target="_blank" rel="noopener noreferrer" class="btn-social">
+                @celtadeco ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
   
   <footer class="site-footer">
@@ -467,8 +516,7 @@
     </div>
   </footer>
 
-
-<!-- Unified Script Engine -->
+  <!-- Unified Script Engine -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -478,7 +526,6 @@
       const header = document.querySelector('.site-header');
 
       window.addEventListener('scroll', () => {
-        // Suppress hide-on-scroll during link jump scrolling
         if (isNavScrolling) {
           header.classList.remove('nav-hidden');
           lastScrollY = window.scrollY;
@@ -486,7 +533,6 @@
         }
 
         const currentScrollY = window.scrollY;
-        // Only hide header if scrolled past 150px AND scrolling downward significantly
         if (currentScrollY > lastScrollY && currentScrollY > 150) {
           header.classList.add('nav-hidden');
         } else {
@@ -507,7 +553,6 @@
             isNavScrolling = true;
             header.classList.remove('nav-hidden');
 
-            // Dynamically calculate actual rendered header height + 40px visual margin
             const headerHeight = header.offsetHeight;
             const buffer = 40; 
             const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
@@ -518,7 +563,6 @@
               behavior: 'smooth'
             });
 
-            // Re-enable automatic hide/show after smooth scroll finishes
             setTimeout(() => {
               isNavScrolling = false;
               lastScrollY = window.scrollY;
@@ -534,7 +578,6 @@
         const thumbnails = Array.from(accordion.querySelectorAll('.drawer-thumbnail'));
         const coverThumb = accordion.querySelector('.rotating-thumb');
 
-        // Dynamically set cover thumbnail from drawer content without hardcoded JS arrays
         if (coverThumb && thumbnails.length > 0) {
           const randomIndex = Math.floor(Math.random() * thumbnails.length);
           coverThumb.src = thumbnails[randomIndex].src;
@@ -616,9 +659,5 @@
       });
     });
   </script>
-
-
-
 </body>
 </html>
-
