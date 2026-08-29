@@ -1,3 +1,5 @@
+
+
 /* ==========================================================================
    CELTADECO Core Architecture - CSS Design Tokens & Reset
    ========================================================================== */
@@ -7,7 +9,7 @@
     --bg-secondary: #f5f5f3;
     --text-dark: #1a1a1a;
     --text-muted: #666666;
-    --accent: #b5a48c; /* Editorial Warm Taupe */
+    --accent: #b5a48c;
     --accent-subtle: #a38f68;
     --font-sans: 'Helvetica Neue', Arial, sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -19,29 +21,59 @@
     padding: 0;
 }
 
+/*
 html {
+    scroll-padding-top: 140px; /* Offset to clear the fixed header 
     scroll-behavior: smooth;
     font-family: var(--font-sans);
     background-color: var(--bg-primary);
     color: var(--text-dark);
     line-height: 1.6;
 }
+*/
+
+/* Fallback for native non-JS browser jumps */
+
+html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    scroll-padding-top: 220px; /* Matched to complete header height */
+}
+
+main {
+    padding-top: 180px; /* Pushes the entire content layout down past the fixed header */
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+.text-justify { text-align: justify; }
+.text-center { text-align: center; }
 
 /* ==========================================================================
    Header & Navigation
    ========================================================================== */
 
 .site-header {
-    position: static;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 1.25rem 4%;
-    background-color: rgba(26, 26, 26, 0.95);
+    padding: 8px 24px;
+    background-color: rgba(26, 26, 26, 0.95); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+header.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .header-container {
@@ -64,7 +96,7 @@ html {
 }
 
 .header-logo {
-    max-height: 190px;
+    max-height: 150px;
     width: auto;
     display: block;
 }
@@ -126,9 +158,13 @@ html {
    Structural Layouts & Sections
    ========================================================================== */
 
+
+/* Base Layout Container */
 .section-container {
-    padding: 3rem 4%;
+    padding: 6rem 4% 3rem 4%; /* Increased top padding to ensure full title clearance */
+    box-sizing: border-box;
 }
+
 
 .alternative-bg {
     background-color: var(--bg-secondary);
@@ -154,7 +190,6 @@ html {
     align-items: center;
 }
 
-.project-card img, 
 .media-block img {
     width: 100%;
     height: 350px;
@@ -163,14 +198,6 @@ html {
     transition: var(--transition-smooth);
 }
 
-.media-block img.profile-brand-mark {
-    width: auto !important;
-    height: auto !important;
-    max-width: 180px;      
-    object-fit: contain;   
-    margin: 0 auto;
-    opacity: 0.8;
-}
 
 /* ==========================================================================
    Project List Accordion Architecture
@@ -234,11 +261,33 @@ html {
     animation: fadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/*
 .accordion-figure {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 100% !important;
+    position: sticky;
+    top: 20px;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+} */
+
+.accordion-figure {
+    /* Remove position: sticky; */
+    position: relative; 
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+
+.drawer-thumbnail-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 .drawer-thumbnail-container h4 {
@@ -254,7 +303,6 @@ html {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1rem;
     padding: 1rem 0;
-    animation: fadeIn 0.4s ease;
 }
 
 .drawer-thumbnail {
@@ -262,6 +310,7 @@ html {
     height: 80px;
     object-fit: cover;
     border-radius: 2px;
+    cursor: pointer;
     transition: var(--transition-smooth);
 }
 
@@ -269,53 +318,31 @@ html {
     opacity: 0.8;
 }
 
-/* Thumbnail Animations & Scroll Engines */
-.portfolio-thumb-link {
-    display: block;
-    max-width: 380px;
-    width: 100%;
-    overflow: hidden;
-}
-
 .rotating-thumb {
-    width: 100% !important;
-    max-width: 280px !important;
-    height: 240px !important;
-    object-fit: cover !important;
+    width: 280px;
+    height: 240px;
+    object-fit: cover;
     display: block;
     border-radius: 4px;
 }
 
-.project-card figure {
-    width: 100%;           
-    max-width: 450px;       
-    height: 500px;          
-    margin: 0 auto;        
-    display: flex;
-    flex-direction: column; 
-    position: relative;     
-    overflow: hidden;       
-}
-
-.project-card .img-scroll-container {
+.img-scroll-container {
     width: 100%;
-    flex-grow: 1;           
-    height: 100%;           
-    overflow: hidden !important; 
+    height: 100%;
+    overflow: hidden;
     position: relative;
     cursor: zoom-in;
     border: 1px solid #e0e0e0;
     background-color: #f9f9f9;
 }
 
-.project-card .img-scroll-container img.main-showcase-img {
-    width: 100%;            
-    height: 100%;           
+.main-showcase-img {
+    max-height: 80vh;
+    width: auto;
+    object-fit: contain;
     display: block;
-    object-fit: cover;
     transform-origin: center center;
     transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform: scale(1);
 }
 
 /* ==========================================================================
@@ -439,45 +466,41 @@ html {
    Footer
    ========================================================================== */
 
-footer, .site-footer {
-    height: auto !important;            
-    padding: 2rem 4% !important;
-    display: flex !important;
-    flex-direction: column !important; 
-    align-items: center !important;     
-    justify-content: center !important;
+.site-footer {
+    padding: 2rem 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: 0.8rem;
     color: #777777;
-    background-color: rgba(26, 26, 26, 0.95) !important;
+    background-color: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
 .footer-container {
-    height: auto !important;
-    margin: 0 auto !important;
+    margin: 0 auto;
 }
 
-img.footer-logo,
-.site-footer img {
-    height: 200px !important;            
-    width: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    filter: invert(1) brightness(2);    
+.footer-logo {
+    height: 200px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    filter: invert(1) brightness(2);
 }
 
 .site-footer .footer-info {
-    margin-top: 1rem !important;     
+    margin-top: 1rem;
 }
 
 .site-footer p {
-    margin: 0 !important;
-    font-size: 0.75rem !important;
-    color: #777777 !important;
-    line-height: 1.4 !important;        
+    font-size: 0.75rem;
+    color: #777777;
+    line-height: 1.4;
 }
 
 @keyframes fadeIn {
@@ -507,24 +530,3 @@ img.footer-logo,
 }
 
 
-/* Apply to all accordion drawers */
-.accordion-figure {
-  position: sticky;
-  top: 20px;
-  max-height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-showcase-img {
-  max-height: 80vh;
-  width: auto;
-  object-fit: contain;
-}
-
-.drawer-thumbnail-container {
-  max-height: 80vh;
-  overflow-y: auto;
-  padding-right: 8px;
-}
