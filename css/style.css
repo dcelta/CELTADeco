@@ -41,7 +41,7 @@ html {
 }
 
 main {
-    padding-top: 180px; /* Pushes the entire content layout down past the fixed header */
+    padding-top: 130px; /* Pushes the entire content layout down past the fixed header */
 }
 
 /* ==========================================================================
