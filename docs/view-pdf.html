@@ -22,13 +22,12 @@
         <p><a id="fallback-link" href="#">Click here to download the file directly.</a></p>
       </div>
     </object>
-    
     <script>
       const params = new URLSearchParams(window.location.search);
       const pdfFile = params.get('file');
       if (pdfFile) {
-        document.getElementById('pdf-object').data = pdfFile;
-        document.getElementById('fallback-link').href = pdfFile;
+          document.getElementById('pdf-object').data = pdfFile;
+          document.getElementById('fallback-link').href = pdfFile;
       }
     </script>
   </body>
