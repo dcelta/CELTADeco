@@ -695,3 +695,37 @@ PDF Download Callout Section
     justify-content: center;
   }
 }
+
+/* Dual Button Layout */
+.pdf-download-action {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Secondary Button Variant (Outlined style for language distinction) */
+.btn-pdf-secondary {
+  background-color: transparent;
+  color: var(--text-dark, #1a1a1a);
+  border: 1px solid var(--text-dark, #1a1a1a);
+}
+
+.btn-pdf-secondary:hover {
+  background-color: var(--text-dark, #1a1a1a);
+  color: #ffffff;
+  border-color: var(--text-dark, #1a1a1a);
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+  .pdf-download-action {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .pdf-download-action .btn-pdf {
+    width: 100%;
+    justify-content: center;
+  }
+}
